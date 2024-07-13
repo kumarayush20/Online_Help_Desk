@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    Layout = null;
+}
+
+
+
+@model Account
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border-radius: 1rem;
+        }
+
+        .card-header {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        .btn-primary {
+            border-radius: 1rem;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4>Login</h4>
+                    </div>
+                     @*   <h1>Generated Hash</h1>
+                    <p>@ViewData["Hash"]</p>    *@ 
+                    <div class="card-body">
+                        @ViewBag.error
+                        <form asp-controller="Login" asp-action="Process" method="post">
+                            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                            <div class="form-group">
+                                <label asp-for="UserName" class="control-label">Username:</label>
+                                <input asp-for="UserName" class="form-control" placeholder="Enter your username" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label">Password:</label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            @* <div class="col-8">
+                                <a asp-action="ForgetPassword" class="text-decoration-none float-start mt-2" asp-route-returnurl="@ViewData["ReturnUrl"]">ForgetPassword?</a>
+                            </div>
+ *@
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+﻿@* @*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Onlinehelpdesk.Models.ViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+@model Onlinehelpdesk.Models.ViewModel.AccountViewModel
+@* <div class="col-md-12">
+    @if (ViewBag.msg == "Done")
+    {
+        <div class="callout callout Success">
+            <h4> successfull</h4>
+        </div>
+    }
+</div> *@
+
+
+
+
+<h2>Add Account</h2>
+
+<form asp-action="Add" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <div class="form-group">
+        <label asp-for="Account.UserName" class="control-label"></label>
+        <input asp-for="Account.UserName" class="form-control" />
+        <span asp-validation-for="Account.UserName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Account.FullName" class="control-label"></label>
+        <input asp-for="Account.FullName" class="form-control" />
+        <span asp-validation-for="Account.FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Account.Email" class="control-label"></label>
+        <input asp-for="Account.Email" class="form-control" />
+        <span asp-validation-for="Account.Email" class="text-danger"></span>
+    </div>
+      <div class="form-group">
+        <label asp-for="Account.Password" class="control-label"></label>
+        <input asp-for="Account.Password" class="form-control" />
+        <span asp-validation-for="Account.Password" class="text-danger"></span>
+    </div>
+   @*  <div class="form-group">
+        <label asp-for="SelectedRoleId" class="control-label"></label>
+        <select asp-for="SelectedRoleId" class="form-control" asp-items="Model.Role"></select>
+        <span asp-validation-for="SelectedRoleId" class="text-danger"></span>
+    </div> *@
+    <div>
+        <label>Role</label>
+        <select class="form-control" asp-for="Account.RoleId" asp-items="@Model.Role"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Account.Status"></label>
+        <select asp-for="Account.Status" class="form-control">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+        <span asp-validation-for="Account.Status" class="text-danger"></span>
+    </div>
+
+    @*  <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" asp-for="Account.Status"> Check Me Out
+                                </label>
+                            </div> *@
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <input type="hidden" name="id" asp-for="Account.Id" />
+    </div>
+</form>
+@* <section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Account </h3>
+                    </div>
+                    <form asp-action="Add" method="post">
+    <div class="form-group">
+                    <label asp-for="Account.UserName" class="control-label"></label>
+        <input asp-for="Account.UserName" class="form-control" />
+        <span asp-validation-for="Account.UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Account.Email" class="control-label"></label>
+        <input asp-for="Account.Email" class="form-control" />
+        <span asp-validation-for="Account.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Account.FullName" class="control-label"></label>
+        <input asp-for="Account.FullName" class="form-control" />
+        <span asp-validation-for="Account.FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Account.Password" class="control-label"></label>
+        <input asp-for="Account.Password" class="form-control" />
+        <span asp-validation-for="Account.Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedRoleId" class="control-label">Role</label>
+        <select asp-for="SelectedRoleId" class="form-control" asp-items="Model.Role"></select>
+        <span asp-validation-for="SelectedRoleId" class="text-danger"></span>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" asp-for="Account.Status"> Check Me Out
+                                </label>
+                            </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    @* <form method="post" asp-controller="Account" asp-action="Add">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="UserName">User Name</label>
+                                <input type="text" class="form-control" id="UserName"  placeholder="UserName" asp-for="Account.UserName">
+                            </div>
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" class="form-control" id="Password" placeholder="Password" asp-for="Account.Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="FullName">Full Name</label>
+                                <input type="text" class="form-control" id="FullName" placeholder="FullName" asp-for="Account.FullName">
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" placeholder="Email" asp-for="Account.Email">
+                            </div>
+                        </div>
+                        @* 
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select class="form-control" asp-for="Account.RoleId" asp-items="@Model.Role"></select>
+                        </div>@**@
+                        <@* div class="form-group"> 
+                            <label for="RoleId">Role:</label>
+                            <select asp-for="SelectedRoleId" asp-items="@Model.Role" class="form-control"></select>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" asp-for="Account.Status"> Check Me Out
+                            </label>
+                        </div> *@
+                        <!-- /.card-body -->
+@* 
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <input type="hidden" name="id" asp-for="Account.Id" />
+                        </div>
+                    </form>
+                </div>
+ *@

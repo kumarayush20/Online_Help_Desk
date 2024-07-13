@@ -1,0 +1,91 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Account List";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                         <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Status </th>
+                                    <th>Action </th>
+                                </tr>
+                            </thead>
+
+
+                            <tfoot>
+                                @foreach (var category in ViewBag.Category)
+                                {
+                                    <tr>
+                                        <td>@category.Id</td>
+                                        <td>@category.Name</td>
+
+                                        <td>@(category.Status ? "Active" : "Inactive")</td>
+                                        <td>
+                                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" onclick="return confirm('Are You Sure?')">Delete</a> |
+                                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id">Edit</a>
+                                            @* <a asp-controller="Account" asp-action="Delete" asp-route="@account.Id" onclick="return confirm('Are You Sure?')">Edit</a> | *@
+                                            @*  <a href="@Url.Action("Delete", "Account", new { id = account.Id })">Delete</a> *@
+                                        </td>
+                                    </tr> 
+                                    @*      @foreach(var account in ViewBag.accounts){
+                                <tr>
+                                <td>@account.Id</td>
+                                <td>>@account..UserName</td>
+                                <td>>@account.FullName</td>
+                                <td>>@account.Email</td>
+                                <td>>(@account.Status ? "":"Active":"Inactive")</td>
+                                <td>Edit|Delete </td>
+                                </tr> *@
+                                }
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+                <script>
+                    $(function () {
+
+                        $('#example2').DataTable({
+                            "paging": true,
+                            "lengthChange": false,
+                            "searching": false,
+                            "ordering": true,
+                            "info": true,
+                            "autoWidth": false,
+                            "responsive": true,
+                        });
+                    });
+                </script>
